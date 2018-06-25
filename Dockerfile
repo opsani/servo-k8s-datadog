@@ -3,7 +3,9 @@ FROM python:3.6-slim
 WORKDIR /servo
 
 # Install dependencies
-RUN pip3 install datadog requests PyYAML
+RUN pip3 install datadog requests PyYAML && \
+	apt-get update && apt-get install -y apache2-utils
+
 ADD https://storage.googleapis.com/kubernetes-release/release/v1.10.0/bin/linux/amd64/kubectl /usr/local/bin/kubectl
 
 # Install servo
